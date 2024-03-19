@@ -70,6 +70,16 @@ class UserController {
             next(e);
         }
     }
+
+    async updateUsers(req, res, next) {
+        try {
+            const { id } = req.params;
+            const userData = await userService.updateUser(id, req.body);
+            return res.json(userData);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 

@@ -76,6 +76,13 @@ class UserService {
         const users = await UserModel.find();
         return users;
     }
+    async updateUser(id, updateData) {
+        const updatedUser = await UserModel.findByIdAndUpdate(id, updateData, { new: true });
+        if (!updatedUser) {
+            throw ApiError.NotFoundError('User не найден');
+        }
+        return updatedUser;
+    }
 }
 
 module.exports = new UserService();

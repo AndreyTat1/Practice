@@ -13,7 +13,7 @@ class DispatcherService {
         if (candidate) {
             throw ApiError.BadRequest(`Диспетчер с почтовым адресом ${email} уже существует`);
         }
-        const hashPassword = await bcrypt.hash(password, 3);
+        const hashPassword = await bcrypt.hash(password, 3);///hash password
         const activationLink = uuid.v4(); 
 
         const dispatcher = await DispatcherModel.create({ email, password: hashPassword, activationLink });
